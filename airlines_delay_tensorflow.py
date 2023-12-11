@@ -1,7 +1,11 @@
+from datetime import datetime as dt
+
 import tensorflow as tf
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
+
+start_ts = dt.now()
 
 '''Wczytywanie danych z pliku csv'''
 data = pd.read_csv('data/airlines_delay_train.csv')
@@ -39,4 +43,9 @@ print(f'Loss (MSE) on test data: {loss}')
 '''Przewidywanie na podstawie modelu'''
 predictions = model.predict(X_test)
 
+end_ts = dt.now()
+ts_diff = end_ts - start_ts
 
+print(f"Start time: {start_ts}")
+print(f"End time: {end_ts}")
+print(f"Exec time: {ts_diff}")
